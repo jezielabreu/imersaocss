@@ -1,0 +1,47 @@
+/*essa é a marcação de comentários no css*/
+/*"Árvore de estilos", deixa o site/documento bonito! Está ligado ao html, como se fosse um anexo dele. Acessa os elementos declarados no html e modifica as suas propriedades visuais, como cor de fonte, tamanho da letra, cor de fundo, tamanho da caixa do texto...*/
+
+body {/*essa tag já foi feita aqui no codepen. Deve ser usada quando trabalharmos com arquivos separados para html e css. Ela pega todo o conteúdo da página, então, pega o fundo da página. TUDO O QUE ESTÁ DENTRO DAS CHAVES VAI SER UM CONJUNTO DE PROPRIEDADES QUE VÃO MODIFICAR A APRESENTAÇÃO DA TAG BODY. */
+    background-image: url(https://cdn6.f-cdn.com/contestentries/1370548/19120511/5b4d43f5c58ce_thumb900.jpg);
+    background-size: auto 100vh; /*O auto 150vh quer dizer que a altura da imagem corresponderá a 100% do tamanho da tela que estamos abrindo o site e a largura se ajustará automaticamente à altura, ou seja, mantém a proporção baseado no tamanho da tela. Eu poderia utilizar um valor relativo, como 500px 500px; pra definir largura e altura, mas esse valor seria fixo.*/
+    font-family: Arial;
+    height:100vh /*Aqui definimos que a altura do body vai acompanhar a altura da tela (viewport)*/
+}
+/*A estrutura sempre vai ser seletor (body), chaves({), propriedade(background), dois pontos(:) valor(orange), ponto e vírgula(;), enter e chave(}).
+PARA CARREGAR UMA IMAGEM PODERIA USAR A PROPRIEDADE background-image: url(www.blablabla);
+A url é uma função que pega um endereço, neste caso de uma imagem, e usa como background.
+As propridades que tem duas palavras sempre são separadas por hífen*/
+
+/*No html utilizamos o class para separar os elementos para conseguir editá-los depois no CSS*/
+
+.menu {/*utlizamos o ponto (.) para selecionar as class que definimos entre aspas no html.
+Os elementos que são nativos do html css, como o body, não precisam de . para serem chamados*/
+    background-color: white
+}
+
+.menu ul {
+    display: flex; /*o display controla a forma como os ul estão organizados e o flex define que estarão organizados como colunas, lado a lado*/
+    justify-content: space-around; /*Aqui o justify content (justificar conteúdo) definiu que os elementos estarão justificados (distribuídos do início ao fim da linha) e com um espaço entre eles, definido pelo space around. Ela fica com esse espaço gigante porque há um espaço padrão entre os elementos*. Se eu utilizasse o justify content sozinho ele não funcionaria. Porque algumas propriedades só funcionam atrelados a outras./.
+}
+
+.menu li { /* Esse é um seletor hierárquico. Aqui estou dizendo que só quero alterar o que for li DENTRO da class menu. Dessa forma, se eu criar outras li no texto, elas não respeitarão a formatação definida.*/
+    list-style: none; /*Aqui retirei o ponto que é padrão para as listas*/
+}
+
+a {
+    text-decoration: none; /*retirei o underline do padrão dos links, dizendo que o text decoration do elemento a vai ser nenhum.*/
+    color: teal;
+}
+
+a:hover {
+    text-decoration: underline; /*Em seguida defini que a PSEUDOCLASSE a:hover, que representa o momento em que o mouse está sobre os elementos a do html, vai fazer esses elementos estarem com o underline. */
+}
+.site-subtitle, /*fazendo assim, podemos atribuir propriedades básicas a mais de um seletor ao mesmo tempo! Reaproveitamento de código, bitch!*/
+.site-title {
+    color: whitesmoke;
+    text-align: center;
+}
+
+.site-subtitle { /*Aqui eu resolvi que quero dar outra propriedade exclusivamente para o subtitle.*/
+    font-style: italic; /*Hoje em dia tudo o que é estilo de fonte nós passamos para o CSS*/
+}
