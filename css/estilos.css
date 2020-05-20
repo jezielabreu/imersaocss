@@ -1,11 +1,26 @@
+/*Este é o seletor que faz um soft CSS reset. Declaramos ele logo no início do código porque ele é o seletor mais genérico de todos e com hierarquia mais baixa. Vai ser a primeira coisa  a ser lida pelo CSS:*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}/*Zerei a margin e padding padrão. Sendo assim, os elementos apenas terão margin e padding se eu setar. Além de definir a forma de medir o tamanho da caixa a partir da borda.*/
+
 /*essa é a marcação de comentários no css*/
 /*"Árvore de estilos", deixa o site/documento bonito! Está ligado ao html, como se fosse um anexo dele. Acessa os elementos declarados no html e modifica as suas propriedades visuais, como cor de fonte, tamanho da letra, cor de fundo, tamanho da caixa do texto...*/
 
 body {/*essa tag já foi feita aqui no codepen. Deve ser usada quando trabalharmos com arquivos separados para html e css. Ela pega todo o conteúdo da página, então, pega o fundo da página. TUDO O QUE ESTÁ DENTRO DAS CHAVES VAI SER UM CONJUNTO DE PROPRIEDADES QUE VÃO MODIFICAR A APRESENTAÇÃO DA TAG BODY. */
-    background-image: url(https://cdn6.f-cdn.com/contestentries/1370548/19120511/5b4d43f5c58ce_thumb900.jpg);
+    background-image: url('../img/fundo.jpg');
     background-size: auto 100vh; /*O auto 150vh quer dizer que a altura da imagem corresponderá a 100% do tamanho da tela que estamos abrindo o site e a largura se ajustará automaticamente à altura, ou seja, mantém a proporção baseado no tamanho da tela. Eu poderia utilizar um valor relativo, como 500px 500px; pra definir largura e altura, mas esse valor seria fixo.*/
-    font-family: Arial;
+    font-family: 'Nova Mono', monospace;
     height:100vh /*Aqui definimos que a altura do body vai acompanhar a altura da tela (viewport)*/
+}
+
+/*O @media é ao seletor que a tag meta viewport do html liberou. Que funciona como um IF.
+Se as telas tiverem pelo menos 400px de largura esses estilos serão carregados. São chamados BREAKPOINTS:*/
+@media (min-width: 400px) {
+    body {
+        font-size: 14px;
+    }
 }
 /*A estrutura sempre vai ser seletor (body), chaves({), propriedade(background), dois pontos(:) valor(orange), ponto e vírgula(;), enter e chave(}).
 PARA CARREGAR UMA IMAGEM PODERIA USAR A PROPRIEDADE background-image: url(www.blablabla);
@@ -14,18 +29,34 @@ As propridades que tem duas palavras sempre são separadas por hífen*/
 
 /*No html utilizamos o class para separar os elementos para conseguir editá-los depois no CSS*/
 
+header {
+    height: 100vh;/*Aqui eu faço o primeiro elemento que aparece no site ocupar toda a tela do usuário*/
+    display: flex; /*Aqui transformo os elementos do header em colunas. Tive que criar a div para unir o h1 e h2 em uma mesma coluna*/
+    justify-content: center;/*Centraliza os elementos flex horizontalmente*/
+    align-items: center;/*Centraliza os elementos flex verticalmente*/
+}
+
 .menu {/*utlizamos o ponto (.) para selecionar as class que definimos entre aspas no html.
 Os elementos que são nativos do html css, como o body, não precisam de . para serem chamados*/
-    background-color: white
+    background-color: white;
+    position: fixed;/* Setando a posição para fixed o menu acompanha a rolagem e fica sobreposto aos elementos (eixo z), além de sair do display flex.*/
+    width: 100vw;/*Aqui eu forço a largura do menu para ocupar toda a tela*/
+    top: 0;/*Top só funciona se um position estiver declarado. Ele "cola" o elemento no topo da página.*/
 }
 
 .menu ul {
     display: flex; /*o display controla a forma como os ul estão organizados e o flex define que estarão organizados como colunas, lado a lado*/
-    justify-content: space-around; /*Aqui o justify content (justificar conteúdo) definiu que os elementos estarão justificados (distribuídos do início ao fim da linha) e com um espaço entre eles, definido pelo space around. Ela fica com esse espaço gigante porque há um espaço padrão entre os elementos*. Se eu utilizasse o justify content sozinho ele não funcionaria. Porque algumas propriedades só funcionam atrelados a outras./.
+    justify-content: space-around; /*Aqui o justify content (justificar conteúdo) definiu que os elementos estarão justificados (distribuídos do início ao fim da linha) e com um espaço entre eles, definido pelo space around. Ela fica com esse espaço gigante porque há um espaço padrão entre os elementos*. Se eu utilizasse o justify content sozinho ele não funcionaria. Porque algumas propriedades só funcionam atrelados a outras.*/
 }
 
 .menu li { /* Esse é um seletor hierárquico. Aqui estou dizendo que só quero alterar o que for li DENTRO da class menu. Dessa forma, se eu criar outras li no texto, elas não respeitarão a formatação definida.*/
     list-style: none; /*Aqui retirei o ponto que é padrão para as listas*/
+}
+
+.menu a {/*Seletor apenas os links a dentro do nosso menu nav*/
+    display: block;/*Quero aumentar a área clicável dos meus links. Para isso preciso aumentar o seu padding. Mas elementos A por padrão são alinhados ao texto (display: in line), então não seu padding nunca atravessa por completo o alinhamento do texto em que está contido. Se transformo ele em block posso usar o padding como quero*/
+    padding: 10px 20px;
+    /*background: gray;Uso outro background para visualizar e testar as modificações.*/
 }
 
 a {
@@ -40,8 +71,50 @@ a:hover {
 .site-title {
     color: whitesmoke;
     text-align: center;
+    font-size: 3em;/* xem é uma unidade relativa. Quer dizer que essa fonte vai mudar de tamanho de acordo com o tamanho de fonte padrão do site (a do body). O 3 quer dizer que ele vai ser 3 vezes o valor declarado lá. Isso faz com que as fontes do site se tornem responsivas, caso definamos um @media que altere o tamanho da fonte do body de acordo com o tamanho da tela. */
+    font-family: 'Cinzel', serif;
+    line-height: 1.1em;
 }
 
 .site-subtitle { /*Aqui eu resolvi que quero dar outra propriedade exclusivamente para o subtitle.*/
     font-style: italic; /*Hoje em dia tudo o que é estilo de fonte nós passamos para o CSS*/
+    font-family: 'Cormorant Infant', serif;
+}
+
+.portfolio {
+    padding: 2em;
+    height: 100vh;
+}
+
+.portfolio h2 {
+    font-family: 'Cinzel', serif; /*Colo a família da fonte do google fonts aqui*/
+    color: whitesmoke;
+    margin-bottom: 1.5em;
+    font-size: 2em;
+    text-align: center;
+}
+
+.portfolio .grid {
+    display: grid;
+    gap: 2em;  /*O Gap define um espaço entre os elementos em grid. Também posso usar medidas relacionais aqui.*/
+}
+
+@media (min-width: 620px) {/*{Media query */
+    .portfolio .grid {
+        grid-template-columns: 300px 300px; /*Valores em px. Terei quantas colunas quanto valores adicionar. Se a condição for aceita. */
+        align-content: center;
+        justify-content: center;
+        height: calc(100vh - 8em - 37px); /*A função calc serve para calcularmos diversos valores com unidades diferentes. Aqui calculei a altura do grid subtraindo da altura total da tela as alturas do título da seção e das margens somadas. */
+    }
+} 
+
+.portfolio figure {/* Só selecionei as figuras do portfolio, mas o text-align também pegou as legendas automaticamente! */
+    text-align: center;
+}
+
+.img-portfolio {
+    height: 200px;
+    width: 300px;
+    object-fit: cover;
+    object-position: bottom;
 }

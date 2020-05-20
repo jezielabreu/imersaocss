@@ -1,25 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!--Aqui no HEAD passamos informações para o navegador. O usuário não vê. Aqui que dizemos que o html deve ler determinado css.-->
+<head>
+    <!--Aqui no HEAD passamos informações para o navegador. O usuário não vê. Aqui que dizemos que o html deve ler determinado css.-->
     <meta charset="UTF-8">
-    <title>Jeziel Abreu</title><!--Título da minha página-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--Essa meta tag faz com que todo o conteúdo do site se adapte ao tamanho de tela que estão utilizando para visualizá-lo! A partir dela conseguimos fazer alterações no layout para cada tamanho diferente, como se fossem condições "if".-->
+    <title>Jeziel Abreu</title>
+    <!--Título da minha página-->
     <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Infant:ital,wght@1,600&family=Nova+Mono&display=swap" rel="stylesheet"> <!--Devemos colar os estilos de fonte embaixo da tag link do CSS-->
 </head>
-<body> <!--Tag de abertura-->
+
+<body>
+    <!--Tag de abertura-->
     <!--essa é a marcação de comentários no html-->
-<!--Formado por tags ou elementos. Possui indentação como outros codigos e ela facilita localizarmos os elementos e hierarquias, o que está dentro do que. Todo documento HTML é um documento de texto. E a função do html é estruturar, dar significado para o texto. Por isso é chamado de linguagem de marcação. Jeziel Abreu é o título principal nesse documento-->
+    <!--Formado por tags ou elementos. Possui indentação como outros codigos e ela facilita localizarmos os elementos e hierarquias, o que está dentro do que. Todo documento HTML é um documento de texto. E a função do html é estruturar, dar significado para o texto. Por isso é chamado de linguagem de marcação. Jeziel Abreu é o título principal nesse documento-->
 
 
-<header> <!--Cabeçalho!-->
-    <nav class="menu"> <!--Barra de navegação!-->
-        <ul> <!--Lista!-->
-            <li><a href="#">Sobre</a></li> <!--Itens da lista!-->
-            <li><a href="#">Portfólio</a></li> <!--Itens da lista!-->
-            <li><a href="#">Contato</a></li> <!--Itens da lista!-->
-        </ul> <!--Fim da lista!-->   
-    </nav> <!--Fim da barra de navegação!-->
-    <h1 class="site-title">Jeziel Abreu</h1> <!--Seção 1!-->
-    <h2 class="site-subtitle">nunca termina o que começa</h2> <!--Seção 2!-->
-</header> <!--Fim do cabeçalho!-->
+    <header>
+        <!--Cabeçalho!-->
+        <nav class="menu">
+            <!--Barra de navegação!-->
+            <ul>
+                <!--Lista!-->
+                <li><a href="#">Sobre</a></li>
+                <!--Itens da lista!-->
+                <li><a href="#">Projetos</a></li>
+                <!--Itens da lista!-->
+                <li><a href="#">Contato</a></li>
+                <!--Itens da lista!-->
+            </ul>
+            <!--Fim da lista!-->
+        </nav>
+        <!--Fim da barra de navegação!-->
+        <div> 
+            <h1 class="site-title">JEZIEL GUSMÃO DE ABREU</h1>
+            <!--Seção 1!-->
+            <h2 class="site-subtitle">jamais termina o que começa</h2>
+            <!--Seção 2!-->
+        </div><!--Abri essa div apenas para agrupar o h1 e h2 para poder movê-los juntos.-->
+        
+    </header>
+    <!--Fim do cabeçalho!-->
+
+    <section class="portfolio">
+        <h2>Projetos</h2>  <!--O flexbox aqui não seria adequado pois não conseguimos configurá-lo com tanta precisão. Então usarei o Grid.-->
+        
+        <div class="grid"><!--Para utilizar o grid, precisei criar uma grid para reunir as imagens em um container só. Criei uma classe para ele pois precisarei modificá-lo no CSS-->        
+            <figure>
+                <img class="img-portfolio" src="./img/biblioteconomia.jpe" alt="Biblioteconomia">
+                <figcaption>Biblioteconomia</figcaption>
+            </figure>
+            <figure>
+                <img class="img-portfolio" src="./img/fotografia.jpeg" alt=">Fotografia">
+                <figcaption>Fotografia</figcaption>
+            </figure>
+            <figure>
+                <img class="img-portfolio" src="./img/gravura.jpg" alt="Gravura">
+                <figcaption>Gravura</figcaption>
+            </figure>
+            <figure>
+                <img class="img-portfolio" src="./img/programacao.jpeg"
+                    alt="Programação">
+                <figcaption>Programação</figcaption>
+            </figure>
+        </div>
+
+    </section>
 </body>
+
 </html>
