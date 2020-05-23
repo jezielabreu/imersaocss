@@ -4,10 +4,14 @@
     <!--Aqui no HEAD passamos informações para o navegador. O usuário não vê. Aqui que dizemos que o html deve ler determinado css.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--Essa meta tag faz com que todo o conteúdo do site se adapte ao tamanho de tela que estão utilizando para visualizá-lo! A partir dela conseguimos fazer alterações no layout para cada tamanho diferente, como se fossem condições "if".-->
+
     <title>Jeziel Abreu</title>
     <!--Título da minha página-->
+
     <link rel="stylesheet" href="css/estilos.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Infant:ital,wght@1,600&family=Nova+Mono&display=swap" rel="stylesheet"> <!--Devemos colar os estilos de fonte embaixo da tag link do CSS-->
+
+    <script src="https://kit.fontawesome.com/2a56d1dad3.js" crossorigin="anonymous"></script> <!-- Aqui eu colo o código fornecido pelo fotawesome para conseguir habilitar os meus links! Parecido com o caso do google fonts -->
 </head>
 
 <body>
@@ -18,21 +22,21 @@
 
     <header>
         <!--Cabeçalho!-->
-        <nav class="menu">
+        <nav class="menu"> <!-- Posso atribuir mais de uma classe ao elemento. Ex: class="menu outraclasse"-->
             <!--Barra de navegação!-->
             <ul>
                 <!--Lista!-->
-                <li><a href="#">Sobre</a></li>
+                <li><a href="#sobre">Sobre</a></li>
                 <!--Itens da lista!-->
-                <li><a href="#">Projetos</a></li>
+                <li><a href="#portfolio">Projetos</a></li>
                 <!--Itens da lista!-->
-                <li><a href="#">Contato</a></li>
+                <li><a href="#contato">Contato</a></li>
                 <!--Itens da lista!-->
             </ul>
             <!--Fim da lista!-->
         </nav>
         <!--Fim da barra de navegação!-->
-        <div> 
+        <div class="titulo"> <!-- Dei nome para a div apenas para fazer a animação -->
             <h1 class="site-title">JEZIEL GUSMÃO DE ABREU</h1>
             <!--Seção 1!-->
             <h2 class="site-subtitle">jamais termina o que começa</h2>
@@ -42,7 +46,28 @@
     </header>
     <!--Fim do cabeçalho!-->
 
-    <section class="portfolio">
+    <section class="sobre container" id="sobre"> <!-- Se eu digitar section.sobre um atalho já cria uma nova seção com a classe sobre ao dar enter -->
+        <h2>Sobre</h2>
+        
+        <figure class="avatar">
+            <img src="./img/perfil.jpg" alt="">
+        </figure>
+        
+        <p> <!-- Parágrafo -->
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia animi eveniet porro adipisci ipsam placeat earum nemo quasi iste voluptatibus recusandae sit asperiores expedita labore consectetur autem, cumque possimus sapiente!
+        </p>
+
+        <p>
+            Dolore, sapiente. Culpa eius animi minus qui enim praesentium nemo. Assumenda facere fugiat architecto nulla illo suscipit eaque optio nihil? Atque quidem odio eos qui mollitia, quae voluptatem itaque laboriosam.
+        </p>
+
+        <p>
+            Este site foi construído durante a <a href="https://www.alura.com.br/imersao-css">Imersão CSS da Alura</a> ;)
+        </p>
+    
+    </section>
+
+    <section class="portfolio container" id="portfolio"><!-- Crio um id para fazer um link com o #que adicionei nos links do meu menu -->
         <h2>Projetos</h2>  <!--O flexbox aqui não seria adequado pois não conseguimos configurá-lo com tanta precisão. Então usarei o Grid.-->
         
         <div class="grid"><!--Para utilizar o grid, precisei criar uma grid para reunir as imagens em um container só. Criei uma classe para ele pois precisarei modificá-lo no CSS-->        
@@ -66,6 +91,22 @@
         </div>
 
     </section>
+
+    <section class="contato container" id="contato"> <!-- Crio um id para fazer um link com o #que adicionei nos links do meu menu -->
+        <h2>Contato</h2>
+        <div class="grid icons"> <!-- Nomeamos como "grid icons" para diferenciar do grid de cima que é só "grid". Na hora de criar um seletor só preciso utilizar .contato .icons! -->
+          <a target="_blank" href="https://github.com/jezjel">
+            <i class="fab fa-github-alt"></i> <!-- Aqui adiciono o html do ícone fornecido pelo fontawesome! -->
+          </a>
+          <a target="_blank" href="https://instagram.com/jezjel">
+            <i class="fab fa-instagram"></i> <!-- Esses ícones sofrem as mesmas modificações que as fontes. -->
+          </a>
+          <a href="mailto:jezielabreu@gmail.com">
+            <i class="far fa-envelope-open"></i>
+          </a>
+        </div>
+    </section>
+
 </body>
 
 </html>
