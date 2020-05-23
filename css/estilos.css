@@ -42,11 +42,14 @@ Os elementos que são nativos do html css, como o body, não precisam de . para 
     position: fixed;/* Setando a posição para fixed o menu acompanha a rolagem e fica sobreposto aos elementos (eixo z), além de sair do display flex.*/
     width: 100vw;/*Aqui eu forço a largura do menu para ocupar toda a tela*/
     top: 0;/*Top só funciona se um position estiver declarado. Ele "cola" o elemento no topo da página.*/
+    z-index: 1; /* Aqui alterei a prioridade do eixo z do menu para um valor maior que a dos outros elementos (que não tem valor declarado) para que ele sempre apareça na frente! */
 }
 
 .menu ul {
     display: flex; /*o display controla a forma como os ul estão organizados e o flex define que estarão organizados como colunas, lado a lado*/
     justify-content: space-around; /*Aqui o justify content (justificar conteúdo) definiu que os elementos estarão justificados (distribuídos do início ao fim da linha) e com um espaço entre eles, definido pelo space around. Ela fica com esse espaço gigante porque há um espaço padrão entre os elementos*. Se eu utilizasse o justify content sozinho ele não funcionaria. Porque algumas propriedades só funcionam atrelados a outras.*/
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .menu li { /* Esse é um seletor hierárquico. Aqui estou dizendo que só quero alterar o que for li DENTRO da class menu. Dessa forma, se eu criar outras li no texto, elas não respeitarão a formatação definida.*/
@@ -57,6 +60,12 @@ Os elementos que são nativos do html css, como o body, não precisam de . para 
     display: block;/*Quero aumentar a área clicável dos meus links. Para isso preciso aumentar o seu padding. Mas elementos A por padrão são alinhados ao texto (display: in line), então não seu padding nunca atravessa por completo o alinhamento do texto em que está contido. Se transformo ele em block posso usar o padding como quero*/
     padding: 10px 20px;
     /*background: gray;Uso outro background para visualizar e testar as modificações.*/
+    transition: background-color 0.5s, color 0.5s; /* A transition regula a velocidade que qualquer transição definida por mim para o menu a até em outro seletor vai acontecer. Sempre declarar as transições que quero definir uma a uma*/
+}
+
+.menu a:hover { /* Quando eu passar o mouse nos links de menu...*/
+    background-color: teal;
+    color: white;
 }
 
 a {
@@ -64,9 +73,24 @@ a {
     color: teal;
 }
 
-a:hover {
-    text-decoration: underline; /*Em seguida defini que a PSEUDOCLASSE a:hover, que representa o momento em que o mouse está sobre os elementos a do html, vai fazer esses elementos estarem com o underline. */
-}
+/* a:hover { 
+    text-decoration: underline; Em seguida defini que a PSEUDOCLASSE a:hover, que representa o momento em que o mouse está sobre os elementos a do html, vai fazer esses elementos estarem com o underline.
+ } NÃO PRECISO MAIS DESSE UNDERLINE AQUI!*/
+
+ .titulo {
+     transform: scale(0.2) translateY(50vh);
+     opacity: 0;
+
+     animation: 2s ease 0.5s intro forwards;/* O animation cria uma animação e define parâmetros para ela. Os declarados são: duração, tipo de animação, delay de início, nome da animação e loop. */
+ }
+
+ @keyframes intro{ /* Já decidi como a animação vai acontecer. Aqui eu defino o que vai acontecer na minha animação, definindo os passos dela. Aqui defini o final dela porque vai ser considerado como estado inicial o que está contido no seletor onde o animation foi declarado.*/
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+ }
+
 .site-subtitle, /*fazendo assim, podemos atribuir propriedades básicas a mais de um seletor ao mesmo tempo! Reaproveitamento de código, bitch!*/
 .site-title {
     color: whitesmoke;
@@ -81,17 +105,68 @@ a:hover {
     font-family: 'Cormorant Infant', serif;
 }
 
+.sobre,
+.contato,
 .portfolio {
     padding: 2em;
-    height: 100vh;
+    min-height: 100vh;
+    margin-right: auto; /* Esta é uma forma de centralizar horizontalmente sem fazer cálculos. Apenas defino as margens máximas para os dois lados! */
+    margin-left: auto;
 }
 
+@media (min-width: 1200px) {
+    .container {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1200px;
+    }
+}
+
+.sobre h2,
+.contato h2,
 .portfolio h2 {
-    font-family: 'Cinzel', serif; /*Colo a família da fonte do google fonts aqui*/
     color: whitesmoke;
-    margin-bottom: 1.5em;
+    font-family: 'Cinzel', serif; /*Colo a família da fonte do google fonts aqui*/
     font-size: 2em;
+    margin-bottom: 1.5em;
+    margin-top: 1em;
     text-align: center;
+}
+
+.sobre p {
+    color: whitesmoke;
+    margin-bottom: 1.4em; /* Cada parágrafo é um container, então essa margem define a distância entre eles. */
+    text-align: justify;
+    text-indent: 2.5em; /* Para definir recuos de parágrafo. */
+
+}
+
+.sobre .avatar img {
+    height: 324px;
+    width: 324px;
+    border-radius: 50%; /* Faz a borda da imagem redonda */
+    /*clip-path: ; corta o elemento baseado em parâmetros que formam polígonos*/
+}
+
+@media (max-width: 450px) {
+    .sobre .avatar img {
+        height: 224px;
+        width: 224px;
+    }
+}
+
+.sobre .avatar {
+    margin-bottom: 1.5em;
+    /* float: left; Essa propriedade faz o texto ficar em volta das imagens. */
+    text-align: center;
+}
+
+.sobre a {
+    color: cyan;
+}
+
+.sobre a:hover {
+    text-decoration: underline;
 }
 
 .portfolio .grid {
@@ -106,7 +181,7 @@ a:hover {
         justify-content: center;
         height: calc(100vh - 8em - 37px); /*A função calc serve para calcularmos diversos valores com unidades diferentes. Aqui calculei a altura do grid subtraindo da altura total da tela as alturas do título da seção e das margens somadas. */
     }
-} 
+}
 
 .portfolio figure {/* Só selecionei as figuras do portfolio, mas o text-align também pegou as legendas automaticamente! */
     text-align: center;
@@ -117,4 +192,25 @@ a:hover {
     width: 300px;
     object-fit: cover;
     object-position: bottom;
+    transition: transform 0.4s;
+}
+
+.img-portfolio:hover {
+    transform: scale(1.05); /* Essa propriedade modifica os elementos, uma imagem por exemplo, sem precisar que eu mexa nas suas dimensões originais e ferre com o layout que criei ou bugue tudo. */
+}
+
+.contato a {
+    color: whitesmoke;
+    font-size: 5em;
+    transition: text-shadow 0.4s;
+}
+
+.contato .icons {
+    text-align: center;
+}
+
+.contato a:active, /* Essa pseudoclasse trata do momento em que o usuário clica no link no celular. */
+.contato a:hover {
+    text-decoration: none;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5); /* Outra forma de selecionar a cor. Utilizando o rgba, que além do vermelho, verde e azul, aceita canal alfa, que define a transparência! */
 }
